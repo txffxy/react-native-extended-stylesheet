@@ -2,6 +2,7 @@
  * Calculates particular value
  */
 
+import px from './replacers/px';
 import rem from './replacers/rem';
 import vars from './replacers/vars';
 import percent from './replacers/percent';
@@ -56,6 +57,7 @@ export default class Value {
       this.tryCalcOperation,
       this.tryCalcVar,
       this.tryCalcPercent,
+      this.tryCalcPx,
       this.tryCalcRem,
     ];
     let value = this.tryActions(actions, this.value);
@@ -106,6 +108,7 @@ export default class Value {
     let actions = [
       this.tryCalcVar,
       this.tryCalcPercent,
+      this.tryCalcPx,
       this.tryCalcRem,
       this.tryCalcFloat,
     ];
@@ -134,6 +137,18 @@ export default class Value {
       return percent.calc(str, this.prop);
     }
     return null;
+  }
+
+  /**
+   * Tries calc px
+   */
+  tryCalcPx(str) {
+    if (px.isPx(str)) {
+      let uiWidthPx = vars.get('$uiWidthPx', this.varsArr);
+      return px.calc(str, uiWidthPx);
+    } else {
+      return null;
+    }
   }
 
   /**
