@@ -42,7 +42,7 @@ function needInt(prop) {
  * @param {String} str
  * @param {String} prop
  * @param {Number} uiWidthPx
- * @returns {number} 
+ * @returns {number}
  */
 function calc(str, prop, uiWidthPx = DEFAULT_UI_EIDTH_PX) {
   let koefStr = str.substr(0, str.length - SUFFIX.length);
