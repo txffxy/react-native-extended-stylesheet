@@ -146,7 +146,7 @@ export default class Value {
   tryCalcPx(str) {
     if (px.isPx(str)) {
       let uiWidthPx = vars.get('$uiWidthPx', this.varsArr);
-      return px.calc(str, uiWidthPx);
+      return px.calc(str, this.prop, uiWidthPx);
     } else {
       return null;
     }
