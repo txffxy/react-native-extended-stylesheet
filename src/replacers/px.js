@@ -30,7 +30,7 @@ function isPx(str) {
  * @return {Boolean}
  */
 function needInt(prop) {
-  if (isAndroid) {
+  if (prop && isAndroid) {
     prop = prop.toLowerCase();
     return INT_PROPS.some(p => prop.indexOf(p) >= 0);
   }
