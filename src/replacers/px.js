@@ -4,7 +4,9 @@
 import {Dimensions, Platform} from 'react-native';
 
 const isAndroid = Platform.OS === 'android';
-const {width: deviceWidthDp} = Dimensions.get('window');
+// const {width: deviceWidthDp} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
+const deviceWidthDp = width > height ? height : width; //取短的一边为宽，防止横屏模式
 const SUFFIX = 'px';
 const DEFAULT_UI_EIDTH_PX = 750;
 const INT_PROPS = [
